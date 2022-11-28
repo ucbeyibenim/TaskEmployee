@@ -1,0 +1,94 @@
+﻿@model TaskEmployee.ViewModels.HomeEditViewModel
+
+
+
+<h2 class="m-4 text-center">Edit Employee</h2>
+
+<form class="row g-3 mb-3" asp-controller="Home" asp-action="Edit" method="post">
+
+   <input type="text" asp-for="Id" hidden>
+   
+    <div class="col-md-6">
+        <label for="Payroll_Number" class="form-label">Payroll Number</label>
+        <input type="text" class="form-control" asp-for="Payroll_Number">
+        <span asp-validation-for="Payroll_Number" class="text-danger"></span>
+    </div>
+
+
+    <div class="col-md-6">
+        <label for="Forenames" class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Forenames">
+        <span asp-validation-for="Forenames" class="text-danger"></span>
+    </div>
+
+
+    <div class="col-md-6">
+        <label for="Surname" class="form-label">Surename</label>
+        <input type="text" class="form-control" asp-for="Surname">
+        <span asp-validation-for="Surname" class="text-danger"></span>
+    </div>
+
+
+    <div class="col-md-6">
+        <label for="Date_of_Birth" class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" asp-for="Date_of_Birth">
+        <span asp-validation-for="Date_of_Birth" class="text-danger"></span>
+    </div>
+
+
+    <div class="col-md-6">
+        <label for="Telephone" class="form-label">Telephone</label>
+        <input type="text" class="form-control" asp-for="Telephone">
+        <span asp-validation-for="Telephone" class="text-danger"></span>
+    </div>
+
+
+    <div class="col-md-6">
+        <label for="Mobile" class="form-label">Mobile</label>
+        <input type="text" class="form-control" asp-for="Mobile">
+        <span asp-validation-for="Mobile" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <label for="Address" class="form-label">Address</label>
+        <input type="text" class="form-control" placeholder="1234 Main St" asp-for="Address">
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <label for="Address_2" class="form-label">Address 2</label>
+        <input type="text" class="form-control" placeholder="Apartment, studio, or floor" asp-for="Address_2">
+        <span asp-validation-for="Address_2" class="text-danger"></span>
+
+    </div>
+
+
+    <div class="col-12">
+        <label for="Postcode" class="form-label">Postcode</label>
+        <input type="text" class="form-control" asp-for="Postcode">
+        <span asp-validation-for="Postcode" class="text-danger"></span>
+
+    </div>
+
+
+    <div class="col-md-6">
+        <label for="EMail_Home" class="form-label">Email</label>
+        <input type="email" class="form-control" asp-for="EMail_Home">
+        <span asp-validation-for="EMail_Home" class="text-danger"></span>
+
+    </div>
+
+
+    <div class="col-md-6">
+        <label for="Start_Date" class="form-label">Start Date</label>
+        <input type="date" class="form-control" asp-for="Start_Date">
+        <span asp-validation-for="Start_Date" class="text-danger"></span>
+
+    </div>
+
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+<br />
+<br />

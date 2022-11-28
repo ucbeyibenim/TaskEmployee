@@ -1,0 +1,32 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, #FDFCFB, #E2D1C3);
+}
+table{
+    font-size:small!important;
+}
+table p{
+    font-size:small!important;
+}
+table a, button{
+    font-size:small!important;
+    color:black;
+    text-decoration:none;
+}
+.navigation{
+    font-size:small!important;
+}

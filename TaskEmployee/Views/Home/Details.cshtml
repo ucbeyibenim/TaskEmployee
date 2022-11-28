@@ -1,0 +1,86 @@
+﻿@model TaskEmployee.ViewModels.HomeDetailsViewModel
+@{
+
+}
+<div class="row mt-4">
+    <div class="col-2 my-3">
+        <a asp-controller="home" asp-action="Index" asp-route-id="@Model.GetEmployee.Id" class="btn btn-sm btn-outline-secondary d-block w-100">Back</a>
+    </div>
+    <div class="card">
+
+        <table class="table table-bordered">
+            <tr class="card-header bg-light border my-3">
+                <th colspan="2" class="text-center">@Model.Title</th>
+            </tr>
+            <tr>
+                <td><b>Payroll Number:</b> </td>
+                <td>@Model.GetEmployee.Payroll_Number </td>
+            </tr>
+            <tr>
+                <td><b>Forenames: </b></td>
+                <td> @Model.GetEmployee.Forenames</td>
+            </tr>
+
+            <tr>
+                <td><b>Surname: </b></td>
+                <td> @Model.GetEmployee.Surname</td>
+            </tr>
+
+            <tr>
+                <td><b>Date of Birth: </b></td>
+                <td> @Model.GetEmployee.Date_of_Birth.Date.ToString("MM/dd/yyyy")</td>
+            </tr>
+            <tr>
+                <td><b>Telephone: </b></td>
+                <td> @Model.GetEmployee.Telephone</td>
+            </tr>
+
+            <tr>
+                <td><b>Mobile: </b></td>
+                <td> @Model.GetEmployee.Mobile</td>
+            </tr>
+            <tr>
+                <td><b>Address: </b></td>
+                <td> @Model.GetEmployee.Address</td>
+            </tr>
+
+            <tr>
+                <td><b>Address_2: </b></td>
+                <td> @Model.GetEmployee.Address_2</td>
+            </tr>
+
+            <tr>
+                <td><b>Postcode: </b></td>
+                <td> @Model.GetEmployee.Postcode</td>
+            </tr>
+
+            <tr>
+                <td><b>EMail_Home: </b></td>
+                <td> @Model.GetEmployee.EMail_Home</td>
+            </tr>
+            <tr>
+                <td><b>Start Date: </b></td>
+                <td> @Model.GetEmployee.Start_Date.Date.ToString("MM/dd/yyyy")</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="row justify-content-around">
+                        <div class="col-3">
+                            <a class="btn btn-sm btn-outline-info d-block w-100" asp-controller="home" asp-action="edit" asp-route-id="@Model.GetEmployee.Id"><img src="~/pen-svgrepo-com.svg" width="20px" /></a>
+                        </div>
+                        <div class="col-3">
+                            <form method="post" asp-controller="home" asp-action="delete" asp-route-id="@Model.GetEmployee.Id" class="form-control p-0">
+                                <button type="submit" class="btn btn-sm btn-outline-danger d-block w-100" onclick="return confirm_delete()"><img src="~/trash-svgrepo-com.svg" width="20px" /></button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </td>
+            </tr>
+        </table>
+       
+    </div>
+</div>
+
+<br />
+<br />

@@ -1,0 +1,507 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using TaskEmployee.DataAcess.Models;
+@model TaskEmployee.ViewModels.HomeIndexViewModel;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<div class="mt-5"> </div>
+<table class="table caption-top small">
+    <caption class="mb-3">
+        <div class="row align-content-between">
+            <div class="col-4">
+                <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Import">
+                    <div class="form-group row">
+                        <div class="input-group">
+                            <input type="file" id="FileUpload1" name="file" class="form-control form-control-sm" />
+                            <input type="submit" value="Upload" class="btn btn-sm btn-outline-secondary" />
+                        </div>
+                        <div class="col-auto">
+                            @if (Model.UploadedDataInfo.Count > 0)
+                            {
+
+                                <span class="text-success">@Model.UploadedDataInfo.Message.</span>
+                                <span class="text-success">@Model.UploadedDataInfo.Count  rows of data loaded</span>
+
+                            }
+                            else
+                            {
+                                <span class="text-danger">@Model.UploadedDataInfo.Message</span>
+
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
+    </caption>
+    <thead>
+        <tr class="text-nowrap">
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["PayrollNumberSortParm"].ToString())" />
+                @Html.ActionLink("Payroll Number", "Index", new {
+                sortOrder = ViewData["PayrollNumberSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["ForenamesSortParm"].ToString())" />
+                @Html.ActionLink("Forenames", "Index", new {
+                sortOrder = ViewData["ForenamesSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["SurnameSortParm"].ToString())" />
+                @Html.ActionLink("Surname", "Index", new {
+                sortOrder = ViewData["SurnameSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["BirthDateSortParm"].ToString())" />
+                @Html.ActionLink("Birth of Date", "Index", new {
+                sortOrder = ViewData["BirthDateSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["TelephoneSortParm"].ToString())" />
+                @Html.ActionLink("Telephone", "Index", new {
+                sortOrder = ViewData["TelephoneSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["MobileSortParm"].ToString())" />
+                @Html.ActionLink("Mobile", "Index", new {
+                sortOrder = ViewData["MobileSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["AddressSortParm"].ToString())" />
+                @Html.ActionLink("Address", "Index", new {
+                sortOrder = ViewData["AddressSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["Address2SortParm"].ToString())" />
+                @Html.ActionLink("Address 2", "Index", new {
+                sortOrder = ViewData["Address2SortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["PostcodeSortParm"].ToString())" />
+                @Html.ActionLink("Postcode", "Index", new {
+                sortOrder = ViewData["PostcodeSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["EMailHomeSortParm"].ToString())" />
+                @Html.ActionLink("Email", "Index", new {
+                sortOrder = ViewData["EMailHomeSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col">
+                <img src="~/@SortImg(@ViewData["StartDateSortParm"].ToString())" />
+                @Html.ActionLink("Start Date", "Index", new {
+                sortOrder = ViewData["StartDateSortParm"],
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })
+
+            </th>
+            <th scope="col"></th>
+        </tr>
+
+        <tr>
+            <form method="post" asp-action="Index" name="search">
+           
+            <td>
+                <input name="Payroll_Number" id="Payroll_Number" value="@ViewBag.Payroll_Number" class="form-control form-control-sm" />
+            </td>
+            <td>
+                <input name="Forenames" id="Forenames" value="@ViewBag.Forenames" class="form-control form-control-sm" />
+            </td>
+            <td>
+                <input name="Surname" id="Surname" value="@ViewBag.Surname" class="form-control form-control-sm" />
+
+            </td>
+
+            <td scope="col">
+                <input type="date" name="Date_of_Birth" id="Date_of_Birth" value="@ViewBag.Date_of_Birth.Date" class="form-control form-control-sm" />
+
+            </td>
+            <td scope="col">
+                <input name="Telephone" id="Telephone" value="@ViewBag.Telephone" class="form-control form-control-sm" />
+
+            </td>
+            <td scope="col">
+                <input name="Mobile" id="Mobile" value="@ViewBag.Mobile" class="form-control form-control-sm" />
+
+            </td>
+            <td scope="col">
+                <input name="Address" id="Address" value="@ViewBag.Address" class="form-control form-control-sm" />
+
+            </td>
+            <td scope="col">
+                <input name="Address_2" id="Address_2" value="@ViewBag.Address_2" class="form-control form-control-sm" />
+
+            </td>
+            <td scope="col">
+                <input name="Postcode" id="Postcode" value="@ViewBag.Postcode" class="form-control form-control-sm" />
+
+            </td>
+            <td scope="col">
+                <input name="EMail_Home" id="EMail_Home" value="@ViewBag.EMail_Home" class="form-control form-control-sm" />
+
+            </td>
+            <td scope="col">
+                <input type="date" name="Start_Date" id="Start_Date" value="@ViewBag.Start_Date.Date" class="form-control form-control-sm" />
+            </td>
+
+            <td>
+                <button class="btn btn-sm btn-outline-secondary">search</button>
+            </td>
+            </form>
+        </tr>
+
+    </thead>
+    <tbody>
+        @{
+            int x = 0;
+        }
+        @if (Model.GetAllEmployees.Count() == 0)
+        {
+            <tr>
+                <td colspan="12">
+                    <p class="alert alert-danger border-1 mt-3">
+                        The requested data was not found
+                    </p>
+                </td>
+            </tr>
+
+        } 
+        @foreach (var employee in Model.GetAllEmployees)
+        {
+            <tr>
+                <td scope="col">@employee.Payroll_Number</td>
+                <td scope="col">@employee.Forenames</td>
+                <td scope="col">@employee.Surname</td>
+                <td scope="col">@employee.Date_of_Birth.Date.ToString("MM/dd/yyyy")</td>
+                <td scope="col">@employee.Telephone</td>
+                <td scope="col">@employee.Mobile</td>
+                <td scope="col">@employee.Address</td>
+                <td scope="col">@employee.Address_2</td>
+                <td scope="col">@employee.Postcode</td>
+                <td scope="col">@employee.EMail_Home </td>
+                <td scope="col">@employee.Start_Date.Date.ToString("MM/dd/yyyy")</td>
+
+                <td class="text-nowrap">
+                    <a asp-controller="home" asp-action="details" asp-route-id="@employee.Id" class="btn btn-sm btn-outline-secondary"><img src="~/eye-svgrepo-com.svg" width="20px" /></a>
+                    <a class="btn btn-sm btn-outline-secondary" asp-controller="home" asp-action="edit" asp-route-id="@employee.Id"><img src="~/pen-svgrepo-com.svg" width="20px" /></a>
+
+                    <form method="post" asp-controller="home" asp-action="delete" asp-route-id="@employee.Id">
+                        <button type="submit" class="btn btn-sm btn-outline-secondary" onclick="return confirm_delete()"><img src="~/trash-svgrepo-com.svg" width="20px" /></button>
+                    </form>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+<br />
+<div aria-label="Page navigation example">
+    <ul class="pagination">
+        @{
+            int c = Model.PageInfo.CurrentPage;
+            int last = Model.PageInfo.LastPage;
+            int from = (c - 5) <= 0 ? 1 : (c - 5);
+            int to = (c + 5) >= last ? last : (c + 5);
+        }
+
+        @if (from != 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", "Home", new {
+                page = 1,
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+            })">
+                    First
+                </a>
+            </li>
+
+        }
+
+
+        @if (c > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", "Home", new {
+                    page = c - 1,
+                    ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+
+                })">
+                    &laquo;
+                </a>
+            </li>
+
+        }
+
+        @for (int p = from; p <= to; p++)
+        {
+            String className = "";
+            @if (p == Model.PageInfo.CurrentPage)
+            {
+                className = "active";
+            }
+            <li class="page-item @className">
+                <a class="page-link" href="@Url.Action("Index", "Home", new {
+                page = p,
+                 ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+            })">@p</a>
+            </li>
+        }
+        @if (c < Model.PageInfo.LastPage)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", "Home", new {
+                    page = c + 1 ,
+                    ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+                })">
+                    &raquo;
+
+                </a>
+            </li>
+
+        }
+        @if (to != Model.PageInfo.LastPage)
+        {
+            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "Home", new { 
+                page = last,
+                ViewBag.Payroll_Number,
+                ViewBag.Forenames,
+                ViewBag.Surname,
+                ViewBag.Date_of_Birth,
+                ViewBag.Telephone,
+                ViewBag.Mobile,
+                ViewBag.Address,
+                ViewBag.Address_2,
+                ViewBag.Postcode,
+                ViewBag.EMail_Home,
+                ViewBag.Start_Date
+            })">Last</a></li>
+
+        }
+
+    </ul>
+</div>
+<br />
+<br />
+
+<script type="text/javascript">
+    function confirm_delete() {
+        return confirm('Are you sure?');
+    }
+
+</script>
+
+@{
+    String SortImg(String param)
+    {
+
+        string imgSrc = "sort-down-alt.svg";
+        switch (param)
+        {
+            case "payroll_number":
+            case "forenames":
+            case "":
+            case "birth_date":
+            case "telephone":
+            case "mobile":
+            case "address":
+            case "address2":
+            case "postcode":
+            case "email_home":
+            case "start_date":
+                imgSrc = "sort-up.svg";
+                break;
+            default:
+                break;
+
+        }
+
+        return imgSrc;
+    }
+
+}
